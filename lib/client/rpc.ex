@@ -4,6 +4,11 @@ defmodule ExAliyun.Client.RPC do
 
   ### Usage
 
+  Please go to Aliyun api explorer to find how to access each service:
+  https://api.aliyun.com/new#/?product=Dysmsapi&api=QuerySendDetails&params={}&tab=DEMO&lang=RUBY
+
+  Below is an example for `SendSms`:
+
   ```elixir
   alias ExAliyun.Client.RPC
 
@@ -14,7 +19,6 @@ defmodule ExAliyun.Client.RPC do
     api_version: "2017-05-25",
   }
 
-  # example for send sms
   params = %{
     "RegionId": "cn-hangzhou",
     "PhoneNumbers": "1865086****",

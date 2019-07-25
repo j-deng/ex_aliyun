@@ -4,22 +4,24 @@ Aliyun client for elixir. Only RPC client for now.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `ex_aliyun` to your list of dependencies in `mix.exs`:
+Use git repo
 
 ```elixir
 def deps do
   [
-    {:ex_aliyun, "~> 0.1.0"}
+    {:ex_aliyun, git: "https://github.com/j-deng/ex_aliyun.git"}
   ]
 end
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/ex_aliyun](https://hexdocs.pm/ex_aliyun).
 
 ## Usage
+
+Please go to Aliyun api explorer to find how to access each service:
+https://api.aliyun.com/new#/?product=Dysmsapi&api=QuerySendDetails&params={}&tab=DEMO&lang=RUBY
+
+Below is an example for `SendSms`:
 
 ```elixir
 alias ExAliyun.Client.RPC
@@ -31,13 +33,12 @@ client = %RPC{
   api_version: "2017-05-25",
 }
 
-# example for send sms
 params = %{
-  "RegionId" => "cn-hangzhou",
-  "PhoneNumbers" => "1865086****",
-  "SignName" => "SignName",
-  "TemplateCode" => "SMS_11111",
-  "TemplateParam" => "{\"code\":123123}"
+  "RegionId": "cn-hangzhou",
+  "PhoneNumbers": "1865086****",
+  "SignName": "SignName",
+  "TemplateCode": "SMS_11111",
+  "TemplateParam": "{\"code\":123123}"
 }
 RPC.request(client, "SendSms", params)
 ```
