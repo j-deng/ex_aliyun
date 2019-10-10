@@ -34,11 +34,11 @@ client = %RPC{
 }
 
 params = %{
-  "RegionId": "cn-hangzhou",
-  "PhoneNumbers": "1865086****",
-  "SignName": "SignName",
-  "TemplateCode": "SMS_11111",
-  "TemplateParam": "{\"code\":123123}"
+  "RegionId" => "cn-hangzhou",
+  "PhoneNumbers" => "1865086****",
+  "SignName" => "SignName",
+  "TemplateCode" => "SMS_11111",
+  "TemplateParam" => "{\"code\":123123}"
 }
 RPC.request(client, "SendSms", params)
 ```
