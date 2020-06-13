@@ -68,9 +68,8 @@ defmodule ExAliyun.Client.RPC do
 
     with {:ok, resp} <- HTTPoison.request(request),
          {:ok, body} <- verify_status(resp),
-         {:ok, json_data} <- Jason.decode(body),
-         {:ok, resp_data} <- check_response_data(json_data) do
-      {:ok, resp_data}
+         {:ok, json_data} <- Jason.decode(body) do
+      {:ok, json_data}
     else
       {:error, error} -> {:error, error}
     end
@@ -84,13 +83,6 @@ defmodule ExAliyun.Client.RPC do
   end
   defp verify_status(%{status_code: status_code}) do
     {:error, %{status_code: status_code}}
-  end
-
-  defp check_response_data(resp_data) do
-    case resp_data["Code"] do
-      "OK" -> {:ok, resp_data}
-      _ -> {:error, resp_data}
-    end
   end
 
   def normalize(params) do
